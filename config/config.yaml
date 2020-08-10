@@ -1,0 +1,32 @@
+CONTACT:
+  email: linder@embl.de
+  person: Bastian Linder
+INPUT:
+    ## exp_mat is a table that requries the following colums: run [string], title [string], layout [SINGLE|PAIRED], trimmed_only [TRUE|FALSE]
+    exp_mat: samples.tsv
+    fastq_method: "ena"
+    species: homo_sapiens
+LOCAL:
+    temp_directory: /tmpdata/linder
+    genome_directory: /g/steinmetz/linder/genomes
+    memory: 4g
+    fastq_dir: fastq
+    results: results
+    logs: logs
+    common_conda: envs/sm_preprocess.yaml
+META:
+    species:
+        homo_sapiens:
+            build: GRCm38
+            release: vM20
+            genome_download_path: "ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M20/GRCm38.primary_assembly.genome.fa.gz"
+            annotation_download_path: "ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M20/gencode.vM20.annotation.gtf.gz"
+        mus_musculus:
+            build: GRCm38
+            release: vM20
+            genome_download_path: "ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M20/GRCm38.primary_assembly.genome.fa.gz"
+            annotation_download_path: "ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M20/gencode.vM20.annotation.gtf.gz"
+    gtf_biotypes: gtf_biotypes.yaml
+FILTER:
+    FLEXBAR:
+        adapter_R1: adapters/ingolia_2017.fasta
